@@ -28,7 +28,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
      # My Apps
-     'products_app'
+     'products_app',
+     'first_app',
+     'user_cart_app',
+     'order_app',
+     
      
 
 ]
@@ -48,7 +52,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,7 +114,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+import os 
+# URL to use when referring to static files
+STATIC_URL = '/static/'
 
+# Directory where Django will collect all static files using 'collectstatic'
+STATIC_ROOT = BASE_DIR / 'assets'  # Use a path like os.path.join(BASE_DIR, 'staticfiles')
+
+# Additional locations of static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+MEDIA_URL = '/media/'  # URL to access media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Directory to store uploaded files
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

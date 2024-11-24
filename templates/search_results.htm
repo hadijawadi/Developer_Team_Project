@@ -1,0 +1,20 @@
+{% include 'includes/pages/header.htm' %}
+
+
+<div class='container py-5 mb-2'>
+
+
+
+{% if products %}
+<h3 class='text-center'> Results for <span class='text-danger'> {{search_query}}</span></h3>
+
+ {% for p in products %}
+
+   <p> <a href ="{% url 'products_app:show_details' p.slug %}"> {{p.product_name}} </a></p>
+ {% endfor %}
+ {% else %}
+<h2 class='text-center'> No Results for <span class='text-danger'> {{search_query}}</span></h2>
+<a href = "{% url 'home_view' %}">Back to home </a>
+{% endif %}
+</div>
+{% include 'includes/pages/footer.htm' %}
