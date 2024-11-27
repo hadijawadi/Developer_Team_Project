@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from products_app.models import Products
 from.models import UserCart,CartItem
+from django.http  import HttpResponse
+
 
 def show_user_cart(request):
     if request.user.is_authenticated:
@@ -32,7 +34,7 @@ def add_to_cart(request, slug):
         cart_item.save()
     
     # Redirect to cart or wherever you want
-    return redirect('view_cart')  # Assume you have a named URL for cart view
+    return HttpResponse('added to your cart')
 
 # @login_required
 # def update_cart_item(request, cart_item_id):

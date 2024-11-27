@@ -1,9 +1,10 @@
 from django.db import models
 from django.utils.text import slugify
-
+from catagory_app.models import Catagory
 
 class Products(models.Model):
     product_name = models.CharField(max_length=250)
+    product_catagory= models.ForeignKey(Catagory,on_delete=models.CASCADE,null=True,blank=True)
     product_price = models.IntegerField()
     product_description = models.TextField(null=True,blank=True,max_length=500)
     product_first_image = models.ImageField(upload_to='products/Images',)

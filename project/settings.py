@@ -32,6 +32,9 @@ INSTALLED_APPS = [
      'first_app',
      'user_cart_app',
      'order_app',
+     'catagory_app',
+     'account_app',
+     
      
      
 

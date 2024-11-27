@@ -2,14 +2,17 @@ from django.shortcuts import render
 from products_app.models import Products
 
 
-
+#  here use this to bring the latest products 
+# .order_by('-created_at')
 def home_view(request):
+
     products = Products.objects.all()
     context = {
         'products':products
     }
     return render(request,'index.html',context)
 
+# for searching among of products and catagories 
 def search(request):
     if request.method == 'POST':
         search_query = request.POST.get('search_input')  # Use .get() instead of ['']

@@ -70,6 +70,12 @@ h6 {
   margin: 0 0 10px;
 }
 
+/* for product first image in the table  */
+#first_product_image{
+  height: 70px;
+  width: 70px;
+
+}
 a {
   color: #2b2d42;
   font-weight: 500;

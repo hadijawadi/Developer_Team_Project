@@ -1,0 +1,46 @@
+{% include 'includes/pages/header.htm' %}
+<br />
+<div class="container py-5 mt-5">
+  <h3 class="text-center text-danger">{{catagory}} products :</h3>
+  <br />
+  <br />
+</div>
+
+{% if products %}
+<div class="container py-2">
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <tr class="text-center align-middle">
+        <th>Product_Name</th>
+        <th>Product_Image</th>
+        <th>c.product_price</th>
+      </tr>
+
+      {% for c in products %}
+      <tr>
+        <td>
+          <p>
+            <a href="{% url 'products_app:show_details' c.slug %}">{{ c}}</a>
+          </p>
+        </td>
+        <td>
+        <img src = {{c.product_first_image.url}} class='img-fluid' id='first_product_image'>
+        </td>
+        <td>
+        {{c.product_price}}
+        </td>
+      </tr>
+
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+{% else %}
+<div class="container">
+  <h5 class="text-danger">there is not product for this {{catagory}}</h5>
+</div>
+{% endif %}
+<br />
+<br />
+{% include 'includes/pages/footer.htm' %}
