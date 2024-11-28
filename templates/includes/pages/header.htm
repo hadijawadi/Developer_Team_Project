@@ -82,9 +82,18 @@
             <li>
               <a href="#"><i class="fa fa-dollar"></i>AF</a>
             </li>
+            {% if request.user.is_authenticated %}
             <li>
-              <a href="#"><i class="fa fa-user-o"></i> My Account</a>
+              <a href="{% url 'account_app:complete_user_profile'%}"><i class="fa fa-user-o"></i> {{request.user.username}}</a>
             </li>
+            {% else %}
+             <li>
+              <a href="{% url 'account_app:register_user'%}"><i class="fa fa-user-o"></i>Register</a>
+            </li>
+             <li>
+              <a href="{% url 'account_app:complete_user_profile'%}"></i>Login</a>
+            </li>
+            {% endif %}
           </ul>
         </div>
       </div>

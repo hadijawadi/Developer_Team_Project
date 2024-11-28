@@ -1,9 +1,19 @@
-{% include 'icnludes/pages/header.htm' %}
+{% include 'includes/pages/header.htm' %}
+
+<div class="container">
+  <h1 class="text-center text-primary">PLease Register Yourself Here</h1>
 
 
-<div class='container'>
-    <h1 class='text-center text-primary'> PLease Register Yourself Here </h1>
 
+  <form action="{%url 'account_app:register_user'%}" method="post">
+    {%csrf_token%} {{form.as_p}}
+    <div class="d-grid">
+      <button class="btn btn-success py-2 m-2 btn-block" type="submit">
+        Register
+      </button>
+    </div>
+    <br />
+    <br />
+  </form>
 </div>
-
-{% include 'icnludes/pages/footer.htm' %}
+{% include 'includes/pages/footer.htm'%}

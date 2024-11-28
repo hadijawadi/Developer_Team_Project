@@ -1,0 +1,22 @@
+{% include 'includes/pages/header.htm' %}
+
+<div class="container">
+  <h1 class="text-center text-primary m-2">PLease Complete your profile  Here or <a href = "{% url 'home_view' %}">Skip</a></h1>
+  <P><span class='text-danger' style='font-size:25px;'>*</span>Inorder to purchase Your phoneNumber and address is needy.</p>
+{% if form.erorrs %}
+{% for e in erorrs%}
+   <p> {{e}}</p>
+   {% endfor %}
+{% endif %}
+  <form action="{%url 'account_app:complete_user_profile'%}" method="post" enctype="multipart/form-data">
+    {%csrf_token%} {{form.as_p}}
+    <div class="d-grid">
+      <button class="btn btn-success py-2 m-2 btn-block" type="submit">
+        Save
+      </button>
+    </div>
+    <br />
+    <br />
+  </form>
+</div>
+{% include 'includes/pages/footer.htm'%}
