@@ -6,10 +6,11 @@ class UserCart(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     product_name = models.ForeignKey(Products,on_delete=models.CASCADE)
     product_amount = models.IntegerField(null=True,blank=True,default=1)
+    product_price = models.IntegerField(null=True,blank=True,default=1)
 
 
     def __str__(self) -> str:
-        return self.product_name.product_name
+        return f"{self.user.username} - {self.product_name} x{self.product_amount}"
 
 
 class CartItem(models.Model):

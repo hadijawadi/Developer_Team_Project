@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 app_name ='user_cart_app'
 
 urlpatterns  = [
-    path('show_user_cart',show_user_cart,name='user_cart'),
-    path('add_to_cart/<slug:slug>',add_to_cart,name='add_to_cart'),
+    path('show_user_cart',show_user_cart,name='show_user_cart'),
+    path('add_to_cart/',add_to_cart,name='add_to_cart'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

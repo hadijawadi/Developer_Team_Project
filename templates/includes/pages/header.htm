@@ -86,12 +86,15 @@
             <li>
               <a href="{% url 'account_app:complete_user_profile'%}"><i class="fa fa-user-o"></i> {{request.user.username}}</a>
             </li>
+            <li>
+              <a href="{% url 'account_app:logout_user'%}"> LogOut</a>
+            </li>
             {% else %}
              <li>
               <a href="{% url 'account_app:register_user'%}"><i class="fa fa-user-o"></i>Register</a>
             </li>
              <li>
-              <a href="{% url 'account_app:complete_user_profile'%}"></i>Login</a>
+              <a href="{% url 'account_app:login_user'%}"></i>Login</a>
             </li>
             {% endif %}
           </ul>

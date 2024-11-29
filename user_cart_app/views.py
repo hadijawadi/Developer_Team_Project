@@ -4,37 +4,44 @@ from django.shortcuts import render, redirect, get_object_or_404
 from products_app.models import Products
 from.models import UserCart,CartItem
 from django.http  import HttpResponse
+from .models import UserCart
 
-
+@login_required
 def show_user_cart(request):
-    if request.user.is_authenticated:
-        return render(request,'user_cart_app/pages/user_cart.htm')
+    user= request.user
+    # user = UserCart.objects.get(user= username)
+    # print(user)
+    cart_items = UserCart.objects.filter(user=user)
+    context = {
+        'products':cart_items
+    }
+ 
+   
+    return render(request,'user_cart_app/pages/user_cart.htm',context)
 
-    return render(request,'user_cart_app/pages/user_cart.htm')
+
+
 
 
 @login_required
-def add_to_cart(request, slug):
-    # Get the product or return a 404 error if not found
-    product = get_object_or_404(Products, slug=slug)
-    
-    # Try to get the user's cart, create if it doesn't exist
-    cart, created = UserCart.objects.get_or_create(user=request.user)
-    
-    # Check if the product is already in the cart
-    cart_item, item_created = CartItem.objects.get_or_create(
-        cart=cart, 
-        product=product,
-        defaults={'quantity': 1}
-    )
-    
-    # If the item already exists, increase the quantity
-    if not item_created:
-        cart_item.quantity += 1
-        cart_item.save()
-    
-    # Redirect to cart or wherever you want
-    return HttpResponse('added to your cart')
+def add_to_cart(request):
+    if request.method == 'POST':
+        product_slug = request.POST.get('slug')
+        print(product_slug)
+        product = get_object_or_404(Products, slug=product_slug)
+        if not product_slug:
+            return HttpResponse("Product slug is missing.")
+        quantity = request.POST.get('quantity')
+        user_product = UserCart.objects.create(
+            user=request.user,
+            product_name = product,
+            product_amount = quantity,
+
+        )
+        user_product.save()
+        return redirect('user_cart_app:show_user_cart')
+
+
 
 # @login_required
 # def update_cart_item(request, cart_item_id):

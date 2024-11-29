@@ -5,12 +5,21 @@
 
 
 
+
 {% if products %}
 <h3 class='text-center'> Results for <span class='text-danger'> {{search_query}}</span></h3>
 
  {% for p in products %}
 
    <p> <a href ="{% url 'products_app:show_details' p.slug %}"> {{p.product_name}} </a></p>
+ {% endfor %}
+ {% elif spe_products %}
+ {% for spe in spe_products %}
+ <p> <a href ="{% url 'products_app:show_special_product_details' spe.slug %}"> {{spe.product_name}} </a></p>
+ {% endfor %}
+ {% elif catagory %}
+ {% for ca in catagory %}
+ <p> <a href ="{% url 'catagory_app:show_catagory_product' ca.id %}"> {{ca.cata_name}} </a></p>
  {% endfor %}
  {% else %}
 <h2 class='text-center'> No Results for <span class='text-danger'> {{search_query}}</span></h2>

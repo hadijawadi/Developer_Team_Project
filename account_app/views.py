@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -10,7 +10,7 @@ from .forms import CustomUserCreationForm
 from django.http import HttpResponse
 
 
-#for sending email to user 
+#for sending email to user when user is registering 
 def test_email(request):
     subject = 'Test Email from Django'
     message = 'This is a test email to confirm your email setup in Django.'
@@ -25,7 +25,7 @@ def test_email(request):
 
 
 # for comopleting user data 
-# @login_required(login_url='')
+@login_required(login_url='account_app:register_user')
 def create_profile(request):
     form = UserProfileForm()   
     if request.method == 'POST':
@@ -42,8 +42,6 @@ def create_profile(request):
 
 
 
-
-
 # for registering user username and password 
 def register_user(request):
     if request.method == 'POST':
@@ -54,8 +52,8 @@ def register_user(request):
 
               # Send the welcome email
              send_mail(
-                'Thank You for Registering',
-                'Welcome! Thank you for registering on our platform.',
+                'Thank You for Registering ',
+                'Welcome! Thank you for registering on our platform. We are excited to have you. develperTeam Store ',
                 'hadijawadi1385@gmail.com',
                 [user_email],
                 fail_silently=False,
@@ -71,12 +69,14 @@ def register_user(request):
 
 
 # for loging out the user 
-
+@login_required(login_url='account_app:register_user')
 def logout_user(request):
-    # user_log = request.user
+    user_log = request.user
+    print(user_log)
     logout(request)
-    return redirect('home')
+    return redirect('home_view')
     
+# write code for logining user 
 
 def login_user(request):
     if request.method == 'POST':
@@ -86,10 +86,10 @@ def login_user(request):
         user = authenticate(username = username , password = password)
         if user is not None:
             login(request,user)
-            return redirect('home')
+            return redirect('home_view')
         else:
-            return render(request,'account_app/pages/login.html',{'error':'Invalid username or password'})
-    return render(request,'account_app/pages/login.html')
+            return render(request,'account_app/pages/login.htm',{'error':'Invalid username or password'})
+    return render(request,'account_app/pages/login.htm')
 
 
 # from .forms import EditProfileForm

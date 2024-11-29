@@ -135,13 +135,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Directory to store uploaded file
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 # for sending email to user when they reister 
-# settings.py
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # SMTP server (Gmail)
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'Hadijawadi1385@gmail.com'  # Your email address
 EMAIL_HOST_PASSWORD = 'kjun rybh khek wbqv'
+#  for logouut url 
+# settings.py
+LOGOUT_REDIRECT_URL = '/'  # Or any valid URL
 
 # this is for app password of gmail 
 # kjun rybh khek wbqv
