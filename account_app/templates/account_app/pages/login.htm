@@ -1,18 +1,26 @@
-{% include 'includes/pages/header.htm' %}
-<br><br>
+{% include 'includes/pages/header.htm' %} <br /><br />
 <div class="container py-5">
-  <h1 class='text-center text-danger'>Login Page</h1>
   <h2>Welcome to our website!</h2>
-    {%if error%}
-    <p>{{error}}</p>
-    {%endif%}
-    <form action="{%url 'account_app:login_user'%}" method="post">
-      {%csrf_token%}
-      
-      <input type="text" placeholder="UserName" , name="username" />
-      <input type="password" placeholder="Password" , name="password" />
-      <button class="btn btn-success" type="submit">Login</button>
-    </form>
-  </div>
-<br><br>
-  {% include 'includes/pages/footer.htm'%}
+  <p>
+    Don't have an account
+    <a href="{% url 'account_app:register_user'%}" class="'text-danger"
+      >Register</a
+    >
+  </p>
+  {%if error%}
+  <p>{{error}}</p>
+  {%endif%}
+  <form action="{%url 'account_app:login_user'%}" method="post">
+    {%csrf_token%}
+    <label for="">Username:</label>
+    <input type="text" placeholder="UserName" , name="username" />
+    <label for="">Password:</label>
+    <input type="password" placeholder="Password" , name="password" />
+    <button class="btn btn-success btn-md " type="submit">Login</button>
+  </form>
+  <br />
+  <button class="btn btn-danger btn-md" type="submit">Forgot Password</button>
+</div>
+
+<br /><br />
+{% include 'includes/pages/footer.htm'%}

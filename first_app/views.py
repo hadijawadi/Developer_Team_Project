@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from products_app.models import Products,SpecialProducts,Catagory
 
 
@@ -30,4 +30,6 @@ def search(request):
                 'search_query': search_query
             }
             return render(request, 'search_results.htm', context)
+        return redirect('/')
+
     

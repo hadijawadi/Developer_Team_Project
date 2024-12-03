@@ -92,8 +92,8 @@
   <!-- special products   started  -->
   <br />
   <br />
-
-  <div class="container">
+  <br>
+  <div class="container py-5">
     <h1>Special Products</h1>
     <div class="row">
       {% for pr in special_products%}
@@ -124,7 +124,7 @@
           </div>
           <div class="add-to-cart">
             <button class="add-to-cart-btn">
-              <i class="fa fa-shopping-cart"></i> add to cart
+              <a href="{% url 'products_app:show_special_product_details' pr.slug%}"><i class="fa fa-shopping-cart"></i> add to cart</a>
             </button>
           </div>
         </div>

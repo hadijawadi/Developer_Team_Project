@@ -65,9 +65,9 @@ class CustomUserCreationForm(UserCreationForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['profile_photo','phone_number','address']
+        fields = ['phone_number','address']
         widgets = {
-            'profile_photo': forms.FileInput(),
+           
             'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your Phone_Number'}),
             'address': forms.Textarea(attrs={'class': 'form-control',  'placeholder': 'Your Address'}),
         }
@@ -77,10 +77,14 @@ class UserProfileForm(forms.ModelForm):
         phone_number = cleaned_data.get('phone_number')
         address = cleaned_data.get('address')
 
-        if phone_number is None:
-            raise forms.ValidationError("Enter your phone_number without of country code ")
+        if phone_number is None or len(phone_number) < 10:
+                 self.add_error('phone_number', "Enter a valid phone number without the country code.")
+
+            
 
         if address is None:
-            self.add_error('address', "Enter your address .")
+                    self.add_error('address', "Enter your address.")
+
+            
 
         return cleaned_data

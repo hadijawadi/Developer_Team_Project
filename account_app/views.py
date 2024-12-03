@@ -34,6 +34,7 @@ def create_profile(request):
             if user_profile is not None:
                 user_profile = form.save(commit=False)  # Don't save to the database yet
                 user_profile.user = request.user # Set the user to the current logged-in user
+                
                 user_profile.save()
                
                 return HttpResponse('Your Profile completed')
@@ -53,13 +54,13 @@ def register_user(request):
               # Send the welcome email
              send_mail(
                 'Thank You for Registering ',
-                'Welcome! Thank you for registering on our platform. We are excited to have you. develperTeam Store ',
+                'Welcome! Thank you for registering on our platform. We are excited to have you. developerTeam ',
                 'hadijawadi1385@gmail.com',
                 [user_email],
                 fail_silently=False,
               )
              login(request,new_user)
-             return redirect('account_app:complete_user_profile')
+             return redirect('/')
     form =CustomUserCreationForm()
     context= {
         'form':form
@@ -91,17 +92,7 @@ def login_user(request):
             return render(request,'account_app/pages/login.htm',{'error':'Invalid username or password'})
     return render(request,'account_app/pages/login.htm')
 
+#  fogetting user password
 
-# from .forms import EditProfileForm
-from django.http import HttpResponse
-
-# # def edit_user_profile(request):
-#     if request.method == 'POST':
-#         form = EditProfileForm(request.POST, request.FILES, instance= request.user)
-#         if form.is_valid():
-#             form.save()
-#             return HttpResponse('profile chanages updated')
-#     form = EditProfileForm(instance=request.user)
-#     print(request.user.username)
-# # here in the instance we may have   request.user.profile alos in the above hadi ajvadi 
-#     return render(request,'account_app/pages/edit_profile.html',{'form':form})
+def forget_password(request):
+    pass

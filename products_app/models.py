@@ -56,7 +56,7 @@ class SpecialProducts(models.Model):
         original_slug = slugify(self.product_name)
         unique_slug = original_slug
         num = 1
-        while Products.objects.filter(slug=unique_slug).exists():
+        while SpecialProducts.objects.filter(slug=unique_slug).exists():
             unique_slug = f"{original_slug}-{num}"
             num += 1
         
