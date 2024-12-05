@@ -75,11 +75,12 @@
             <form method="post" action="{% url 'user_cart_app:add_to_cart' %}">
               {% csrf_token %}
 
-            <input type="text" value="{{product.slug}}" name="slug" readonly>
+            <input type="text" value="{{product.product_name}}" name="product_name" hidden>
+            <input type="number" value="{{product.product_price}}" name="product_price" hidden>
             <div class="qty-label">
               Qty
               <div class="input-number">
-                <input type="number"name = 'quantity' value="1" />
+                <input type="number"name = 'product_amount' value="1" />
                 <span class="qty-up">+</span>
                 <span class="qty-down">-</span>
               </div>

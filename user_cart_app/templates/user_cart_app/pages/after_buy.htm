@@ -1,0 +1,26 @@
+{% include 'includes/pages/header.htm' %}
+
+<h1 class="text-center text-danger">Thank You {{request.user}}</h1>
+
+<div class="container">
+  <p>Here is the details of your purchase:</p>
+
+  <div class="table-responsive">
+    <table class="table table-border ">
+      <thead>
+        <th>Product Name</th>
+        <th>Product Price</th>
+        <th>Product Amount</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{product_name}}</td>
+          <td>{{product_price}}</td>
+          <td>{{product_amount}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% include 'includes/pages/footer.htm' %}

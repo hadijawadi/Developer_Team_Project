@@ -8,17 +8,16 @@ from django.utils.text import slugify
 
 class UserCart(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    product_name = models.ForeignKey(Products,on_delete=models.CASCADE,null=True)
-    product_name_special = models.ForeignKey(SpecialProducts,on_delete=models.CASCADE,null=True)
+    product_name = models.CharField(max_length=1000,null=True,blank=True)
+    # product_name_special = models.ForeignKey(SpecialProducts,on_delete=models.CASCADE,null=True)
     product_amount = models.IntegerField(null=True,blank=True,default=1)
-    product_price = models.IntegerField(null=True,blank=True,default=1)
-    slug= models.SlugField(unique=True,blank=True)
+    product_price = models.CharField(null=True,blank=True,max_length=550)
 
    
 
 
     def __str__(self) -> str:
-        return f"{self.user.username} - {self.product_name} x{self.product_amount}"
+        return f"{self.user.username}  x{self.product_amount}"
 
 
 class CartItem(models.Model):

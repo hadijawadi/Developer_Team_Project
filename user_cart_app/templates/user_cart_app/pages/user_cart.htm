@@ -10,7 +10,6 @@
             <th>Products</th>
             <th>Price</th>
             <th>Quantity</th>
-            <th>Id</th>
             <th>Buy</th>
             <th>Remove</th>
 
@@ -23,7 +22,7 @@
 
             <tr>
               <td class="align-middle">
-                {% if p.product_name.product_first_image.url %}
+                {% if p.product_first_image.url %}
                 <img
                   src="{{ p.product_name.product_first_image.url }}"
                   alt=""
@@ -35,16 +34,24 @@
                   alt=""
                   style="width: 50px"
                 />
-                {% endif %} {% if p.product_name %} {{p.product_name}} {% else%}
-                {{p.product_name_special}} {% endif %}
-              </td>
-              <td class="">{{p.product_price}}</td>
-              <td>{{p.product_amount}}</td>
-              <td>
-                <span>{{ p.slug}}</span>
-                <input type="hidden" name="id" value="{{p.slug}}">
+                {% endif %} 
+                <!-- <input type="text" hidden value="{{p.product_name}}" name="product_name"> -->
+                {{p.product_name}}
+                {{p.product_id}}
+                <input type="hidden"  value="{{p.product_name}}" name="product_name">
+                <input type="hidden"  value="{{p.product_id}}" name="product_id">
 
               </td>
+              <td class="">
+                <input type="hidden" name="product_price" value="{{p.product_price}}">
+
+                {{p.product_price}}
+              </td>
+              <td>
+                <input type="hidden" name="product_amount" value="{{p.product_amount}}">
+
+                {{p.product_amount}}</td>
+            
 
               <td>
               <button class="btn btn-md btn-success" type="submit">

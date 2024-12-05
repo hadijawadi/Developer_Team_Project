@@ -71,7 +71,7 @@
             </li>
             <li>
               <a href="mailto:hadijawadi1385@gmail.com"
-                ><i class="fa fa-envelope-o"></i>Devolper@gmai.com</a
+                ><i class="fa fa-envelope-o"></i>Devolper@gmail.com</a
               >
             </li>
             <li>
@@ -83,8 +83,8 @@
               <a href="#"><i class="fa fa-dollar"></i>AF</a>
             </li>
             {% if request.user.is_authenticated %}
-            <li>
-              <a href="{% url 'account_app:complete_user_profile'%}"><i class="fa fa-user-o"></i> {{request.user.username}}</a>
+            <li style="color: aliceblue;">
+              <i class="fa fa-user-o fw-bold" style="color: aliceblue;"></i> {{request.user.username}}
             </li>
             <li>
               <a href="{% url 'account_app:logout_user'%}"> LogOut</a>

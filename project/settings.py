@@ -34,6 +34,8 @@ INSTALLED_APPS = [
      'order_app',
      'catagory_app',
      'account_app',
+     'saled_products',
+     'rest_framework'
      
      
      
