@@ -6,5 +6,4 @@ from saled_products.models import SaledProducts
 class SaledProductsSerilizers(serializers.ModelSerializer):
     class Meta:
         model = SaledProducts
-        fields = ('__all__')
-        
+        fields =('__all__')

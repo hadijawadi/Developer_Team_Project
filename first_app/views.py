@@ -10,9 +10,10 @@ from first_app.sarilizers import SaledProductsSerilizers
 def send_saled_products(request):
     if request.method == 'GET':
         data = SaledProducts.objects.all()
-        serilizer = SaledProductsSerilizers(data= data, many = True)
+        serilizer = SaledProductsSerilizers(data, many = True)
         return Response(serilizer.data)
-    
+    else :
+        return Response({'error' : 'invalid request'})
 
 #  here use this to bring the latest products 
 # .order_by('-created_at') showing all products EXcept new products 
