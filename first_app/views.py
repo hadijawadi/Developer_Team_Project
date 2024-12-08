@@ -1,11 +1,39 @@
 from django.shortcuts import render,redirect
 from products_app.models import Products,SpecialProducts,Catagory
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 from saled_products.models import SaledProducts
 from first_app.sarilizers import SaledProductsSerilizers
 
 # sending data to api 
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.response import Response
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
+
+# @api_view(['GET'])
+# @authentication_classes([TokenAuthentication])
+# @permission_classes([IsAuthenticated])
+# def send_saled_products(request):
+    # Debug: Check if the user is authenticated
+    # if request.user.is_authenticated:
+    #     print("Authenticated user:", request.user.username)  # Check the authenticated user's username
+    #     if request.user.username == 'rezayee':  # Replace with the actual partner username
+    #         data = SaledProducts.objects.all()
+    #         serializer = SaledProductsSerilizers(data, many=True)
+    #         return Response(serializer.data)
+    #     else:
+    #         return Response({'error': 'You are not authorized to access this API'}, status=403)
+    # # else:
+    #     return Response({'error': 'Authentication credentials were not provided.'}, status=401)
+
+# def send_saled_products(request):
+#     if request.user.username == 'rezayee':  # Replace with your partner's username
+#         data = SaledProducts.objects.all()
+#         serializer = SaledProductsSerilizers(data, many=True)
+#         return Response(serializer.data)
+#     else:
+#         return Response({'error': 'You are not authorized to access this API'}, status=403)
+
 @api_view(['GET'])
 def send_saled_products(request):
     if request.method == 'GET':
@@ -14,6 +42,7 @@ def send_saled_products(request):
         return Response(serilizer.data)
     else :
         return Response({'error' : 'invalid request'})
+    
 
 #  here use this to bring the latest products 
 # .order_by('-created_at') showing all products EXcept new products 

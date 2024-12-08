@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-6q7t1_-1(by5tn%(^o*ly(yi#_^y5tg&=2g_4sp!^5ocp#ck=o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -35,12 +35,26 @@ INSTALLED_APPS = [
      'catagory_app',
      'account_app',
      'saled_products',
-     'rest_framework'
-     
-     
+     'rest_framework',
+     'rest_framework.authtoken',  # This line adds the Token model to your project
+
      
 
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
+
+
+
+
+
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
