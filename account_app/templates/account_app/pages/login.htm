@@ -16,10 +16,12 @@
     <input type="text" placeholder="UserName" , name="username" />
     <label for="">Password:</label>
     <input type="password" placeholder="Password" , name="password" />
-    <button class="btn btn-success btn-md " type="submit">Login</button>
+    <button class="btn btn-success btn-md" type="submit">Login</button>
   </form>
   <br />
-  <button class="btn btn-danger btn-md" type="submit">Forgot Password</button>
+  <a href="{% url 'reset_password' %}">
+    <button class="btn btn-danger btn-md" type="submit">Forgot Password</button>
+  </a>
 </div>
 
 <br /><br />

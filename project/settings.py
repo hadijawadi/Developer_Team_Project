@@ -36,7 +36,7 @@ INSTALLED_APPS = [
      'account_app',
      'saled_products',
      'rest_framework',
-     'rest_framework.authtoken',  # This line adds the Token model to your project
+     'rest_framework.authtoken',  # This line for private access to API 
 
      
 
