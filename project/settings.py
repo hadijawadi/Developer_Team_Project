@@ -138,7 +138,7 @@ import os
 STATIC_URL = '/static/'
 
 # Directory where Django will collect all static files using 'collectstatic'
-STATIC_ROOT = BASE_DIR / 'assets'  # Use a path like os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT =os.path.join(BASE_DIR , 'Assets')  # Use a path like os.path.join(BASE_DIR, 'staticfiles')
 
 # Additional locations of static files
 STATICFILES_DIRS = [

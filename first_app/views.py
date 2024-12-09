@@ -38,6 +38,9 @@ from rest_framework.permissions import IsAuthenticated
 def send_saled_products(request):
     if request.method == 'GET':
         data = SaledProducts.objects.all()
+        for d in data:
+            print(d.customer)
+
         serilizer = SaledProductsSerilizers(data, many = True)
         return Response(serilizer.data)
     else :
@@ -89,3 +92,7 @@ def search(request):
         return redirect('/')
 
     
+def about_us(request):
+    return render(request,'about_us.htm')
+
+

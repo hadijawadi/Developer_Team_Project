@@ -1,12 +1,13 @@
 
 from django.contrib import admin
 from django.urls import path,include
-from first_app.views import home_view,search
+from first_app.views import home_view,search,about_us
 from django.conf import settings
 from django.conf.urls.static import static
 
 #  for resetting user password 
 from django.contrib.auth import views as auth_views
+
 
 
 urlpatterns = [
@@ -17,6 +18,7 @@ urlpatterns = [
     path('user_cart/',include('user_cart_app.urls')),
     path('catagory/',include('catagory_app.urls')),
     path('account/',include('account_app.urls')),
+    path('aboutus/',about_us,name='about_us'),
     path('api/',include('API.urls')),
     # all of the following urls are for restting user password 
     path('password_reset/',auth_views.PasswordResetView.as_view(template_name= 'account_app/pages/reset_password.htm'),name='reset_password'),

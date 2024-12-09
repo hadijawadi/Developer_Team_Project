@@ -1,13 +1,15 @@
 {% include 'includes/pages/header.htm' %}
 <br />
 <div class="container py-5 mt-5">
-  <h3 class="text-center text-danger">Categories</h3>
+  <h2 class="text-danger">Catagories</h2>
+  <br>
 </div>
 
 <div class="container">
   {% for c in catagories %}
-  <h4 class='py-2 m-2'><a href = '{% url "catagory_app:show_catagory_product" c.id %}'>{{c.cata_name}}</a></h4>
+  <h4 class='py-2 m-5 '><a href = '{% url "catagory_app:show_catagory_product" c.id %}'>{{c.cata_name}}</a></h4>
   {% endfor %}
 </div>
-
+<br>
+<br>
 {% include 'includes/pages/footer.htm' %}

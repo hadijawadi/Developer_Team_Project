@@ -24,7 +24,7 @@ def test_email(request):
         return HttpResponse(f'Failed to send email: {e}')
 
 
-# for comopleting user data 
+# for comopleting user data  profile but i did not use in this project 
 @login_required(login_url='account_app:register_user')
 def create_profile(request):
     form = UserProfileForm()   
@@ -54,7 +54,7 @@ def register_user(request):
               # Send the welcome email
              send_mail(
                 'Thank You for Registering ',
-                'Welcome! Thank you for registering on our platform. We are excited to have you. developerTeam ',
+                'Welcome! Thank you for registering on our Website. We are excited to have you. developerTeam (YDL)',
                 'hadijawadi1385@gmail.com',
                 [user_email],
                 fail_silently=False,
