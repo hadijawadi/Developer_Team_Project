@@ -90,6 +90,7 @@ def search(request):
             }
             return render(request, 'search_results.htm', context)
         return redirect('/')
+    return redirect('/')
 
     
 def about_us(request):
