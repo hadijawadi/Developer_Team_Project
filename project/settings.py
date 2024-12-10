@@ -142,7 +142,6 @@ USE_TZ = True
 # for static files for deploying settigns 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATIC_URL = 'static/'
 import os 
 # URL to use when referring to static files
 STATIC_URL = '/static/'
