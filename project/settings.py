@@ -137,7 +137,9 @@ USE_TZ = True
 #     "staticfiles": {
 #         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
 #     },
+# 
 # }
+# for static files for deploying settigns 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = 'static/'
